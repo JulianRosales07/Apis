@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/api.png">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>API Forge</title>
+    <link rel="stylesheet" href="/estilos-css.js/style.css">
+        <script>
+        (function() {
+        emailjs.init("-1UzNvFwLXmHePtQB"); // Reemplaza YOUR_USER_ID con tu ID de usuario de EmailJS
+        })();
+        </script>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo"><a href="/paginas/index.html">API Forge</a></div>
+      <ul class="links">
+        <li><a href="/paginas/index.html">Home</a></li>
+        <li><a href="/paginas/rickandmorty.html">Rick and Morty</a></li>
+        <li><a href="/paginas/pokemon .html">pokemon</a></li>
+        <li><a href="/paginas/Convertidor.html">Convertidor de Moneda</a></li>
+        <li><a href="/paginas/nasa.html">Nasa</a></li>
+        <li><a href="/paginas/formula.html">Formula 1</a></li>
+        <li><a href="/paginas/contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+</header>
+<div class="container text-center">
+  <div class="row align-items-start">
+      <div class="col"></div>
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form id="contactForm" action="" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="portal-energy-level">Nombre:</label>
+                  <input type="text" name="name" class="form-control" id="name" min="0" max="100" placeholder="Nombres Completos" required="">
+                </div>
+                  <div class="form-group col-md-6">
+                      <label for="portal-energy-level">Nivel de Energía del Portal</label>
+                      <input type="number" name="portal-energy-level" class="form-control" id="portal-energy-level" min="0" max="100" placeholder="0 - 100" required="">
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="ricktivity-index">Índice de Rick-tividad</label>
+                      <input type="number" class="form-control" name="ricktivity-index" id="ricktivity-index" step="0.01" min="0" max="10" placeholder="0 - 10" required="">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="current-dimension">Dimensión Actual</label>
+                  <input type="text" class="form-control" name="current-dimension" id="current-dimension" placeholder="Dimension C-137" required="">
+              </div>
+              <div class="form-group">
+                  <label for="mortys-accompanying">Número de Mortys Acompañantes</label>
+                  <input type="number" class="form-control" name="mortys-accompanying" id="mortys-accompanying" min="0" placeholder="0 o más" required="">
+              </div>
+              <div class="form-group">
+                  <label for="jerry-suspicion-scale">Escala de Sospecha de Jerry</label>
+                  <input type="number" class="form-control" name="jerry-suspicion-scale" id="jerry-suspicion-scale" step="0.01" min="0" max="100" placeholder="0 - 100" required="">
+              </div>
+              <div class="form-group">
+                  <label for="megaseeds-collected">Cantidad de Megaseeds Recolectados</label>
+                  <input type="number" class="form-control" name="megaseeds-collected" id="megaseeds-collected" min="0" placeholder="0 o más" required="">
+              </div>
+              <div class="form-group">
+                  <label for="multiverse-status">Estado del Multiverso</label>
+                  <input type="text" class="form-control" name="multiverse-status" id="multiverse-status" placeholder="Equilibrado, Caótico, A punto de colapsar, etc." required="">
+              </div>
+              <div class="form-group">
+                  <label for="plumbus-power">Potencia del Plumbus</label>
+                  <input type="number" class="form-control" name="plumbus-power" id="plumbus-power" step="0.01" min="0" max="1000" placeholder="0 - 1000" required="">
+              </div>
+              <div class="form-group">
+                  <label for="distance-galactic-federation">Distancia hasta la Federación Galáctica (años luz)</label>
+                  <input type="number" class="form-control" name="distance-galactic-federation" id="distance-galactic-federation" min="0" placeholder="Distancia en años luz" required="">
+              </div>
+              <div class="form-group">
+                  <label for="cronenbergs-existence">Existencia de Cronenbergs</label>
+                  <select class="form-control" name="cronenbergs-existence" id="cronenbergs-existence" required="">
+                      <option value="true">Sí</option>
+                      <option value="false">No</option>
+                  </select>
+              </div>
+              <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Tu correo se ha enviado, pronto te contestaremos. ¡Gracias!</div>
+              </div>
+              <div class="text-center"><button id="sendEmailButton" type="submit">Enviar Mensaje</button></div>
+          </form>
+      </div>
+      <div class="col"></div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+     document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de manera predeterminada
+    // Recolecta los datos del formulario
+    var formData = {
+        name: document.getElementById('name').value,
+        portal_energy_level: document.getElementById('portal-energy-level').value,
+        ricktivity_index: document.getElementById('ricktivity-index').value,
+        current_dimension: document.getElementById('current-dimension').value,
+        mortys_accompanying: document.getElementById('mortys-accompanying').value,
+        jerry_suspicion_scale: document.getElementById('jerry-suspicion-scale').value,
+        megaseeds_collected: document.getElementById('megaseeds-collected').value,
+        multiverse_status: document.getElementById('multiverse-status').value,
+        plumbus_power: document.getElementById('plumbus-power').value,
+        distance_galactic_federation: document.getElementById('distance-galactic-federation').value,
+        cronenbergs_existence: document.getElementById('cronenbergs-existence').value
+    };
+    console.log(formData);
+    // Envía el correo electrónico utilizando EmailJS
+    emailjs.send("service_7ncmv1x", "template_0pagl0k", formData)
+        .then(function(response) {
+            console.log("Correo enviado correctamente", response);
+            // Muestra un mensaje de éxito
+            document.querySelector('.sent-message').style.display = 'block';
+        }, function(error) {
+            console.log("Error al enviar el correo", error);
+            // Muestra un mensaje de error
+            document.querySelector('.error-message').style.display = 'block';
+        });
+});
+    </script>
+</body>
+</html>

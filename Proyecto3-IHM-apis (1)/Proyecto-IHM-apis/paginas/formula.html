@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/api.png">
+    <title>API Forge</title>
+    <link rel="stylesheet" href="/estilos-css.js/style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+          <div class="logo"><a href="/paginas/index.html">API Forge</a></div>
+          <ul class="links">
+            <li><a href="/paginas/index.html">Home</a></li>
+            <li><a href="/paginas/rickandmorty.html">Rick and Morty</a></li>
+            <li><a href="/paginas/pokemon .html">pokemon</a></li>
+            <li><a href="/paginas/Convertidor.html">Convertidor de Moneda</a></li>
+            <li><a href="/paginas/nasa.html">Nasa</a></li>
+            <li><a href="/paginas/formula.html">Formula 1</a></li>
+            <li><a href="/paginas/contacto.html">Contacto</a></li>        
+          </ul>
+    </header>
+    <div class="container">
+        <label for="year-input" id="lab     el-year">Año:</label>
+        <input type="number" id="year-input" min="1950" max="2022" value="2022">
+        <button id="fetch-data" id="fetch-button">Obtener Pilotos de Fórmula 1</button>
+        <ul id="driver-list" id="driver-ul"></ul>
+    </div>
+    <script>
+       document.getElementById('fetch-data').addEventListener('click', function() {
+    const year = document.getElementById('year-input').value;
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+
+    fetch(`https://ergast.com/api/f1/${year}/drivers.json`, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            const drivers = data.MRData.DriverTable.Drivers;
+            const driverList = document.getElementById('driver-list');
+            driverList.innerHTML = ''; // Limpiamos la lista antes de agregar los pilotos
+            drivers.forEach(driver => {
+                const listItem = document.createElement('li');
+listItem.setAttribute('id', 'driver-list-item');
+                const driverName = document.createElement('p');
+driverName.setAttribute('id', 'driver-name')
+                driverName.textContent = `${driver.givenName} ${driver.familyName}`;
+                listItem.appendChild(driverName);
+                driverList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error(error));
+});
+    </script>
+</body>
+</html>
